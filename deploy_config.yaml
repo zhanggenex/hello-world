@@ -1,0 +1,60 @@
+# TorchServe 自动部署配置文件
+# 工作目录配置
+work_dir: "./torchserve_workspace"
+
+# TorchServe 服务配置
+torchserve:
+  inference_address: "http://127.0.0.1:8080"
+  management_address: "http://127.0.0.1:8081"
+  initial_workers: 1
+  max_workers: 4
+
+# 模型配置列表
+models:
+  # ResNet18 图像分类模型 (TorchVision)
+  - name: "resnet18"
+    source: "torchvision"
+    model_name: "resnet18"
+    pretrained: true
+    handler: "image_classifier"
+    version: "1.0"
+    initial_workers: 2
+
+  # ResNet50 图像分类模型 (TorchVision)
+  - name: "resnet50"
+    source: "torchvision"
+    model_name: "resnet50"
+    pretrained: true
+    handler: "image_classifier"
+    version: "1.0"
+    initial_workers: 1
+
+  # BERT 文本模型 (HuggingFace)
+  - name: "bert_base"
+    source: "huggingface"
+    hf_model_name: "bert-base-uncased"
+    handler: "custom"
+    version: "1.0"
+    initial_workers: 1
+
+  # YOLOv5 目标检测模型 (PyTorch Hub)
+  - name: "yolov5s"
+    source: "pytorch_hub"
+    repo: "ultralytics/yolov5"
+    model_name: "yolov5s"
+    handler: "object_detector"
+    version: "1.0"
+    initial_workers: 1
+
+  # 自定义本地模型示例
+  # - name: "custom_model"
+  #   source: "local"
+  #   model_path: "/path/to/your/model.pt"
+  #   config_path: "/path/to/your/config.json"
+  #   handler: "custom"
+  #   version: "1.0"
+  #   initial_workers: 1
+  #   extra_files:
+  #     - "/path/to/additional/file1.py"
+  #     - "/path/to/additional/file2.txt"
+  #   requirements: "/path/to/requirements.txt"
