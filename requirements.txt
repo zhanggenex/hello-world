@@ -1,0 +1,41 @@
+# TorchServe 自动部署所需的依赖包
+
+# 核心深度学习框架
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# TorchServe 相关
+torchserve>=0.6.0
+torch-model-archiver>=0.6.0
+torch-workflow-archiver>=0.2.0
+
+# 机器学习和数据处理
+transformers>=4.20.0
+numpy>=1.21.0
+scipy>=1.7.0
+
+# 图像处理
+Pillow>=8.3.0
+opencv-python>=4.5.0
+
+# 网络和API
+requests>=2.28.0
+urllib3>=1.26.0
+
+# 配置和日志
+PyYAML>=6.0
+pyyaml>=6.0
+
+# 开发和测试工具
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# 可选：ONNX 支持
+# onnx>=1.12.0
+# onnxruntime>=1.12.0
+
+# 可选：GPU 支持 (如果需要)
+# 注意：根据您的CUDA版本选择相应的PyTorch版本
+# torch==1.12.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
+# torchvision==0.13.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
